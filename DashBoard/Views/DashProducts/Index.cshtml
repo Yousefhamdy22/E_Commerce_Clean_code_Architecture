@@ -1,0 +1,89 @@
+﻿@using E_Commerce.Domain.Entities;
+@model IEnumerable<Product>
+
+<h1 class="alert alert-primary text-center m-3">
+    Product Index
+</h1>
+@* 
+<form method="get" asp-controller="DashProducts" asp-action="index">
+    <div class="input-group">
+        <input name="search" value="@ViewBag.CurrentSearch" />
+        <button type="submit" class="btn btn-secondary"><i class="bi bi-search"></i></button>
+    </div>
+</form> *@
+
+<a asp-controller="DashProducts" asp-action="SaveAddProduct" class="btn btn-success mt-3">
+    Create New
+</a>
+
+
+
+@if (Model.Count() > 0)
+{
+    <table class="table table-bordered table-hover caption-top text-center">
+        <caption class="text-center fs-1">Staff</caption>
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(emp => emp.ProductId)</th>
+                <th>@Html.DisplayNameFor(emp => emp.Name)</th>
+                <th>@Html.DisplayNameFor(emp => emp.Price)</th>
+                <th>@Html.DisplayNameFor(emp => emp.Description)</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => product.ProductId)</td>
+                    <td>@Html.DisplayFor(m => product.Name)</td>
+                    <td>@Html.DisplayFor(m => product.Price)</td>
+                    <td>@Html.DisplayFor(m => product.Description)</td>
+
+                 @*    <th>  <img src="@DashProductImages" style="object-fit:contain" class="col-4" /> </th> *@
+
+                  @*   <td>
+                        <a asp-controller="DashProducts" asp-action="GetDetailsView" asp-route-id="@product.ProductId" class="btn btn-outline-primary" title="Details">
+                            <i class="bi bi-list-ul"></i>
+                        </a>
+                        <a asp-controller="DashProducts" asp-action="GetEditView" asp-route-id="@product.ProductId" class="btn btn-outline-secondary" title="Edit">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a asp-controller="DashProducts" asp-action="GetDeleteView" asp-route-id="@product.ProductId" class="btn btn-outline-danger" title="Delete">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td> *@
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="table-dark">
+                <th colspan="3" class="text-end">Total</th>
+                <th>@Model.Sum(emp => emp.Price)</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <h1 class="alert alert-danger text-center m-3">No data to display</h1>
+}
+
+<div>
+    @foreach (var employee in Model)
+    {
+        <div class="card text-center mb-1 col-3 d-inline-block">
+            <div class="card-header">@employee.Name</div>
+            <div class="card-body">
+                <h3>@employee.Price</h3>
+            </div>
+            <div class="card-footer">
+                @employee.Price
+            </div>
+        </div>
+    }
+</div>
+
+
+

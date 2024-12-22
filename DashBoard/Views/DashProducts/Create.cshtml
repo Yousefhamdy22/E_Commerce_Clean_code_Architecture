@@ -1,0 +1,75 @@
+﻿@using DashBoard.Core.Entities;
+@model DashProduct
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+
+
+<form asp-action="/DashProducts/SaveAddProduct" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"> Name </label>
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"> Description</label>
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"> Price</label>
+        @Html.EditorFor(model => model.Price, new { @class = "form-control", type = "number", step = "0.01", required = "required" })
+        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Stock" class="control-label">Stock </label>
+        @Html.EditorFor(model => model.Stock, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="solditems" class="control-label">SoldItems</label>
+        @Html.EditorFor(model => model.solditems, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.solditems, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsAvalibel" class="control-label">IsAvailable</label>
+        @Html.CheckBoxFor(model => model.IsAvalibel)
+        @Html.ValidationMessageFor(model => model.IsAvalibel, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="averageRate" class="control-label">AverageRate</label>
+        @Html.EditorFor(model => model.averageRate, new { @class = "form-control", type = "number", step = "0.1", max = "5" })
+        @Html.ValidationMessageFor(model => model.averageRate, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CreatedDate" class="control-label">CreatedDate</label>
+        @Html.EditorFor(model => model.CreatedDate, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DisplayCategory" class="control-label">DisplayCategory</label>
+        @Html.TextBoxFor(model => model.DisplayCategory, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DisplayCategory, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="Images">Upload Images</label>
+        <input type="file" class="form-control-file" id="Images" name="File" multiple />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Product</button>
+</form>
+
+<a href="@Url.Action("Index", "Products")" class="btn btn-secondary mt-3">Back to Products</a>

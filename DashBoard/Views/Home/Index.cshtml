@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Dashboard Home";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="bi bi-house-door"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" 
+                            asp-controller="DashProducts" asp-action="index">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Orders">
+                                <i class="bi bi-receipt"></i> Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Users">
+                                <i class="bi bi-people"></i> Users
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Reports">
+                                <i class="bi bi-bar-chart"></i> Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards Section -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-header">Total Sales</div>
+                            <div class="card-body">
+                                <h5 class="card-title">$25,000</h5>
+                                <p class="card-text">This is the total sales made this month.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-success mb-3">
+                            <div class="card-header">Products</div>
+                            <div class="card-body">
+                                <h5 class="card-title">150</h5>
+                                <p class="card-text">Total active products in your inventory.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-warning mb-3">
+                            <div class="card-header">Orders</div>
+                            <div class="card-body">
+                                <h5 class="card-title">80</h5>
+                                <p class="card-text">Pending orders that need attention.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table Section -->
+                <h2>Recent Orders</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1023</td>
+                                <td>John Doe</td>
+                                <td>2024-11-20</td>
+                                <td>$300</td>
+                                <td><span class="badge bg-success">Completed</span></td>
+                                <td>
+                                    <a href="/Orders/Details/1023" class="btn btn-sm btn-primary">View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1024</td>
+                                <td>Jane Smith</td>
+                                <td>2024-11-21</td>
+                                <td>$150</td>
+                                <td><span class="badge bg-warning">Pending</span></td>
+                                <td>
+                                    <a href="/Orders/Details/1024" class="btn btn-sm btn-primary">View</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
